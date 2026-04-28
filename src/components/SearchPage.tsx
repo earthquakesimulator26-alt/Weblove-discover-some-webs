@@ -4,6 +4,7 @@ import { Bot, Search, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
 import ZergRush from './ZergRush';
 import MinecraftEgg from './MinecraftEgg';
+import HtmlDoctypeEgg from './HtmlDoctypeEgg';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -33,6 +34,7 @@ export default function SearchPage({ query, onNavigate }: SearchPageProps) {
   const [bletchleyDecoding, setBletchleyDecoding] = useState(false);
   const [anagramMode, setAnagramMode] = useState(false);
   const [zergRush, setZergRush] = useState(false);
+  const [htmlCodeStorm, setHtmlCodeStorm] = useState(false);
 
   useEffect(() => {
     // Reset effects
@@ -44,6 +46,7 @@ export default function SearchPage({ query, onNavigate }: SearchPageProps) {
     setBletchleyDecoding(false);
     setAnagramMode(false);
     setZergRush(false);
+    setHtmlCodeStorm(false);
 
     const q = query.toLowerCase().trim();
     
@@ -56,6 +59,7 @@ export default function SearchPage({ query, onNavigate }: SearchPageProps) {
     if (q === 'bletchley park') setBletchleyDecoding(true);
     if (q === 'anagram') setAnagramMode(true);
     if (q === 'zerg rush') setZergRush(true);
+    if (q === 'html doctype') setHtmlCodeStorm(true);
     if (q === 'text adventure') {
       console.log("%cWelcome to Text Adventure!", "color: #4285F4; font-size: 24px; font-weight: bold;");
       console.log("Type `play()` to start exploring the mysteries of the internet.");
@@ -132,6 +136,7 @@ export default function SearchPage({ query, onNavigate }: SearchPageProps) {
       sepia && "sepia duration-[3000ms]"
     )}>
       {zergRush && <ZergRush />}
+      {htmlCodeStorm && <HtmlDoctypeEgg />}
       
       <div className="max-w-3xl mx-auto pt-8">
         {anagramMode && (
