@@ -3,8 +3,10 @@ import { GoogleGenAI } from '@google/genai';
 import { Bot, Search, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
 import ZergRush from './ZergRush';
+import MinecraftEgg from './MinecraftEgg';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
 
 type SearchResult = {
   title: string;
@@ -146,6 +148,10 @@ export default function SearchPage({ query, onNavigate }: SearchPageProps) {
           <div className="mb-8 p-12 bg-slate-50 border border-slate-200 rounded-xl flex justify-center items-center">
              <div className="w-32 h-32 border-[16px] border-indigo-600 border-t-purple-500 rounded-full animate-spin hover:animate-[spin_0.2s_linear_infinite] cursor-pointer shadow-lg" />
           </div>
+        )}
+
+        {query.toLowerCase() === 'minecraft' && (
+          <MinecraftEgg />
         )}
 
         {/* AI Answer Box */}
